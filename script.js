@@ -10,12 +10,16 @@ const diceElement = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn-new');
 const btnRoll = document.querySelector('.btn-roll');
 const btnHold = document.querySelector('.btn-hold');
+const player0Element = document.querySelector('.player-0');
+const player1Element = document.querySelector('.player-1');
 
 //
 diceElement.classList.add('hidden');
 
 // хранит текушие очки
+// const totalScores = [0,0];
 let currentScore = 0;
+let activePlayer = 0;
 
 //roll the dice
 btnRoll.addEventListener('click', function(){
@@ -27,12 +31,16 @@ btnRoll.addEventListener('click', function(){
 
     if(diceNumber !== 1) {
         currentScore += diceNumber;
-        current0Element.textContent = currentScore; // change later
+        document.getElementById(`current-${activePlayer}`).textContent = currentScore;
     } else {
+        currentScore = 0;
+        document.getElementById(`current-${activePlayer}`).textContent = currentScore;
+        current0Element.textContent = currentScore;
+        activePlayer = activePlayer === 0 ? 1 : 0;
+        player0Element.classList.toggle('player-active');
+        player1Element.classList.toggle('player-active');
 
     }
-    // diceElement.classList.remove('hidden');
-    // diceElement.src = `dice${diceNumber}.png`;
 
 });
 
