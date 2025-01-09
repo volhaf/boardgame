@@ -162,3 +162,7 @@ background-color: #ccd8e7;
     font-weight: 700;
     color: #d50b0b;
 }
+
+.hidden {
+    display: none;
+}
